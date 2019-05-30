@@ -19,7 +19,7 @@ public class PullRequestWorkflowImpl implements PullRequestWorkflow {
     @Override
     public void runPullRequest(PullRequest pr) {
         BuildActivity buildActivity = Workflow.newActivityStub(BuildActivity.class, new ActivityOptions.Builder()
-                .setTaskList("default")
+                .setTaskList(Constants.DEFAULT_QUEUE)
                 .setRetryOptions(new RetryOptions.Builder().setBackoffCoefficient(2.0).setMaximumAttempts(3).setInitialInterval(Duration.ofSeconds(1)).build())
                 .setHeartbeatTimeout(Duration.ofMillis(2100))
                 .setScheduleToCloseTimeout(Duration.ofSeconds(30))
